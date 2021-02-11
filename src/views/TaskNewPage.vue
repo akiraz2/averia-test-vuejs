@@ -30,7 +30,7 @@ export default {
             try {
                 const form = {...this.model, status: 1, created_date: (new Date()).toLocaleString()};
                 const {data, status} = await this.axios.post(`tasks`, form);
-                this.$router.push(`/task/${data.id}`);
+                this.$router.replace(`/task/${data.id}`);
             } catch (e) {
               console.error(e);
             } finally {

@@ -5,6 +5,9 @@
 </template>
 
 <script>
+/**
+ * @todo
+ */
 export default {
     name: 'AveriaSelect',
     props: {
