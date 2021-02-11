@@ -1,0 +1,14 @@
+.task-item {
+  list-style-type: none;
+  padding: 15px 25px;
+  cursor: pointer;
+  border: 1px solid #fdfdfd;
+
+  &:hover {
+
+  }
+
+  &__header {
+    margin: 0;
+  }
+}
