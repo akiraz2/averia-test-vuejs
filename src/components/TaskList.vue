@@ -1,32 +1,46 @@
 <template lang="pug">
-  ul.task-list
-    task-item(:task="task" v-for="task in list" :key="task.id")
+  div
+    preloader(v-if="isLoading")
+    ul.task-list(v-else)
+      task-item(:task="task" v-for="task in list" :key="task.id")
 </template>
 
 <script>
 import TaskItem from '@/components/TaskItem';
+import Preloader from '@/components/Preloader';
+
 export default {
     name: 'TaskList',
-    components: { TaskItem },
+    components: { TaskItem, Preloader },
     data() {
         return {
-            isLoading: false,
-            list: []
+            isLoading: true,
+            list: [],
+            totalCount: 0,
+            limit: 200,
+            page: 1
         };
     },
-    created() {
-        this.getList();
+    watch: {
+        '$route.query.page': 'getList'
+    },
+    async mounted() {
+        await this.getList();
     },
     methods: {
         async getList() {
             this.isLoading = true;
             try {
-                const {data, status} = await this.axios.get(`tasks`);
+                const params = {_limit: this.limit, _page: this.$route.query.page};
+                const {data, status, headers} = await this.axios.get(`tasks`, {params});
                 this.list = data;
+                this.totalCount = +headers['x-total-count'];
             } catch (e) {
                 console.error(e);
             } finally {
-                this.isLoading = false;
+                setTimeout(() => {
+                    this.isLoading = false;
+                }, 2000);
             }
         }
     }
