@@ -3,6 +3,8 @@
   padding: 15px 25px;
   cursor: pointer;
   border: 1px solid #fdfdfd;
+  text-align: left;
+  height: 65px;
 
   &:hover {
 
@@ -10,5 +12,17 @@
 
   &__header {
     margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* height: 40px; */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 }
