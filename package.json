@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "publish": "NODE_ENV=production npm run build; push-dir --dir=dist --branch=gh-pages --cleanup",
+    "publish": "VUE_APP_BASE_API_URL=https://my-json-server.typicode.com/akiraz2/averia-test-vuejs/ NODE_ENV=production npm run build; push-dir --dir=dist --branch=gh-pages --cleanup",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
