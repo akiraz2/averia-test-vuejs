@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "publish": "NODE_ENV=production npm run build; push-dir --dir=dist --branch=gh-pages --cleanup",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
