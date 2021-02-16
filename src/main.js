@@ -3,7 +3,7 @@ import App from './App.vue';
 import router from './router';
 import axios from './utils/axios';
 import VueAxios from 'vue-axios';
-import sassStyles from './assets/scss/main.scss';
+import sassStyles from './assets/sass/main.sass';
 
 Vue.use(VueAxios, axios);
 
